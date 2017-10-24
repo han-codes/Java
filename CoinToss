@@ -1,0 +1,23 @@
+import java.util.Random;
+
+/**
+    This program simulates 10 tosses of a quarter.
+*/
+
+public class CoinToss
+{
+    public static void main(String[] args)
+    {
+        // Create a random object to generate random numbers.
+        Random rand = new Random();
+
+        // Simulate the coin toss.
+        for (int i = 0; i < 10; i++)
+        {
+            if (rand.nextInt(2) == 0)
+                System.out.println("Tails");
+            else
+                System.out.println("Heads");
+        }
+    }
+}
