@@ -1,0 +1,149 @@
+/*
+Hannie Kim
+CSCI 1015
+Prof Wood
+2 November 2017
+Programming Assignment 9
+*/
+
+import java.util.Scanner;
+
+/**
+    Purpose of Program is using void and value-returning methods
+    to convert kilometers to a different metric unit.
+*/
+
+public class kimPass9
+{
+    public static void main (String[] args)
+    {
+        // Declare variables
+        double meters;
+        int choice;
+
+        // Creating the Scanner object
+        Scanner keyboard = new Scanner (System.in);
+                System.out.println("Enter a distance in meters: ");
+        meters = keyboard.nextDouble();
+
+        // Letting user know they can't enter negative numbers.
+        if (meters < 0)
+        {
+            System.out.println("Program doesn't accept negative numbers." +
+                                " Please re-enter a positive number: ");
+            meters = keyboard.nextDouble();
+        }
+
+        // Calling the menu(); function
+        menu();
+
+        // // Get the choice from user and continue unless the choice equals 4
+        do{
+            System.out.println("Enter your choice: ");
+            choice = keyboard.nextInt();
+
+            // While the choice is not between 1 and 4
+            // print out that it is in invalid selection.
+            while (choice < 1 || choice > 4)
+            {
+                System.out.println("Invalid selection.");
+                System.out.println();
+                System.out.println("Enter your choice: ");
+                choice = keyboard.nextInt();
+            }
+
+            // Switch statement to call a function depending on the choice
+            // The choice will convert kilometers to a different metric unit
+            switch(choice)
+            {
+                case 1: showKilometers(meters);
+                {
+                    System.out.println();
+                    menu();
+                    break;
+                }
+                case 2:showInches(meters);
+                {
+                    System.out.println();
+                    menu();
+                    break;
+                }
+
+                case 3:showFeet(meters);
+                {
+                    System.out.println();
+                    menu();
+                    break;
+                }
+
+                case 4:
+                {
+                    quitProgram();
+                    System.exit(0);
+                }
+
+                default:
+                    System.out.println("Invalid selection");
+            }
+        }while (choice != 4);
+    }
+
+        /**
+            The showKilometeres method dislays kilometers in the
+            input amount of meters.
+
+            @param meters
+        */
+
+        public static void showKilometers(double meters)
+        {
+            double kilometers = meters * 0.001;
+            System.out.println(meters +" meters is " + kilometers + " kilometers.");
+        }
+
+
+        /**
+            The showInches method displays inches in the input amount of meters.
+
+            @param meters
+        */
+
+        public static void showInches(double meters)
+        {
+            double inches = meters * 39.37;
+            System.out.println(meters +" meters is " + inches + " inches.");
+        }
+
+
+        /**
+            The showFeet method displays feet in the input amount of meters.
+
+            @param meters
+        */
+        public static void showFeet(double meters)
+        {
+            double feet = meters * 3.281;
+            System.out.println(meters +" meters is " + feet + " feet.");
+        }
+
+        /**
+            The quitProgram method used when telling user of the
+            end of the program.
+        */
+        public static void quitProgram()
+        {
+        System.out.println("Bye!");
+        }
+
+        /**
+            The menu method displays the menu options with no parameters.
+        */
+        public static void menu()
+        {
+        System.out.println(" 1. Convert to kilometers ");
+        System.out.println(" 2. Convert to inches ");
+        System.out.println(" 3. Convert to feet ");
+        System.out.println(" 4. Quit the program ");
+        System.out.println(" ");
+        }
+}
